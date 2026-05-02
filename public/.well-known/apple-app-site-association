@@ -1,0 +1,20 @@
+{
+  "applinks": {
+    "details": [
+      {
+        "appIDs": [
+          "X999Z3X86B.com.avantra.Palm"
+        ],
+        "components": [
+          {
+            "/": "/invite/*",
+            "comment": "Palm invite links"
+          }
+        ]
+      }
+    ]
+  },
+  "appclips": {
+    "apps": []
+  }
+}
