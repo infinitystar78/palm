@@ -35,4 +35,8 @@ Universal Links currently target:
 X999Z3X86B.com.avantra.Palm
 ```
 
-When the App Clip exists, add its identifier under `appclips.apps`.
+The association file also advertises the App Clip identifier:
+
+```txt
+X999Z3X86B.com.avantra.Palm.Clip
+```
