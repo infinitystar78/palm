@@ -89,7 +89,7 @@ export async function getPublicInvite(id: string): Promise<PublicInvite | null> 
       id,
       creator_profile,
       case
-        when status = 'pending' and expires_at <= now() then 'expired'
+        when expires_at <= now() then 'expired'
         else status
       end as status,
       created_at,
@@ -101,6 +101,9 @@ export async function getPublicInvite(id: string): Promise<PublicInvite | null> 
   `;
 
   const row = firstRow(rows);
+  if (row?.status === "expired") {
+    throw new ApiError(410, "invite_expired", "Invite has expired.");
+  }
   return row ? toPublicInvite(row) : null;
 }
 
@@ -157,7 +160,7 @@ export async function getCreatorResult(
       recipient_profile,
       compatibility_result,
       case
-        when status = 'pending' and expires_at <= now() then 'expired'
+        when expires_at <= now() then 'expired'
         else status
       end as status,
       created_at,
@@ -182,6 +185,19 @@ export async function getCreatorResult(
   }
 
   return toCreatorResult(row);
+}
+
+export async function deleteExpiredInvites(): Promise<number> {
+  const rows = await getSql()`
+    with deleted as (
+      delete from invite_sessions
+      where expires_at <= now()
+      returning 1
+    )
+    select count(*)::integer as deleted_count from deleted
+  `;
+
+  return (rows as { deleted_count: number }[])[0].deleted_count;
 }
 
 function getSql(): SqlClient {

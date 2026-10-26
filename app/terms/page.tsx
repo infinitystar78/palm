@@ -3,10 +3,9 @@ import Link from "next/link";
 import LegalPage, { type LegalSection } from "@/components/legal/LegalPage";
 
 export const metadata: Metadata = {
-  title: "Terms of Use — Draft",
-  description: "Draft terms for Palm, operated by Avantra Services Ltd.",
-  alternates: { canonical: "/terms" },
-  robots: { index: false, follow: false }
+  title: "Terms of Use",
+  description: "Terms of Use for Palm, operated by Avantra Services Ltd.",
+  alternates: { canonical: "/terms" }
 };
 
 const sections: LegalSection[] = [
@@ -17,6 +16,11 @@ const sections: LegalSection[] = [
       <p>
         Palm is an iOS palm-reading and compatibility app operated by <strong>Avantra Services Ltd</strong>.
         These terms describe using Palm, its compatibility invites and the getpalm.app website.
+      </p>
+      <p>
+        You must be <strong>18 or older</strong> to use Palm. Availability and subscription
+        options can vary by country or region. Nothing in these terms takes away consumer
+        rights that apply to you under local law.
       </p>
       <p>
         Readings, daily insights and comparisons are for entertainment and personal reflection.
@@ -89,8 +93,9 @@ const sections: LegalSection[] = [
       </p>
       <p>
         Completing an invite sends your derived profile and comparison result to the service.
-        The creator can retrieve them using a separate creator token. An invite’s expiry
-        does not guarantee that the shared data has been deleted or that every copy is inaccessible.
+        The creator can retrieve them using a separate creator token. Invite access ends
+        14 days after creation, including for completed comparisons. Expiry does not remove
+        copies people have already saved or received.
         Read the <Link href="/privacy#retention">retention section of the Privacy Policy</Link> before sharing.
       </p>
       <p>
@@ -126,11 +131,5 @@ export default function TermsPage() {
     title="Terms of Use"
     introduction="How Palm works, what a subscription means, and what to consider before sharing."
     sections={sections}
-    reviewNotes={<ul>
-      <li>The company details and existing Avantra privacy contact have been checked against Companies House and Avantra’s published policy. A separate Palm mailbox has not been created.</li>
-      <li>Apple’s standard EULA is the proposed app licence. Confirm the License Agreement setting in App Store Connect and whether a custom EULA applies in any launch territory.</li>
-      <li>Confirm launch countries, minimum user age and any jurisdiction-specific consumer terms. No governing law, arbitration, liability cap or service-level commitment has been invented.</li>
-      <li>Resolve the Privacy Policy’s retention and request-handling gaps, review both documents, then set an effective date and remove draft notes and search-engine exclusions before an authorised publication.</li>
-    </ul>}
   />;
 }

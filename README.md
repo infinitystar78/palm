@@ -9,11 +9,14 @@ source code, raw scan logic, private keys, or secrets.
 ## Routes
 
 - `/` basic Palm landing page
+- `/terms` Terms of Use
+- `/privacy` Privacy Policy
 - `/invite/[id]` invite fallback page
 - `POST /api/invites` create an invite session
 - `GET /api/invites/[id]` fetch public invite context for the recipient
 - `POST /api/invites/[id]/complete` complete an invite with derived recipient/result JSON
 - `GET /api/invites/[id]/result` fetch the completed result with the creator token
+- `GET /api/cron/expire-invites` authenticated hourly deletion of expired invite records
 - `/.well-known/apple-app-site-association` Apple association file
 - `/apple-app-site-association` root copy of the Apple association file
 
@@ -32,6 +35,7 @@ Required environment variables:
 - `NEXT_PUBLIC_SITE_URL=https://getpalm.app`
 - `DATABASE_URL` or `POSTGRES_URL` from Neon
 - `INVITE_TOKEN_PEPPER` as a long random server-only secret
+- `CRON_SECRET` as a long random server-only secret, for authenticated scheduled cleanup
 
 Optional environment variables:
 
@@ -40,6 +44,20 @@ Optional environment variables:
 - `NEXT_PUBLIC_APP_CLIP_BUNDLE_ID` once the App Clip target exists
 
 ## Invite API
+
+Invite access expires 14 days after creation for both pending and completed
+records. Completion does not extend the lifetime. An hourly Vercel cron removes
+expired rows. Missing cron configuration fails closed; only an exact bearer
+secret is accepted. See `docs/legal-finalisation-2026-10-26.md` for the operator
+verification and recovery procedure.
+
+## Local checks
+
+Use Node.js 24 (the production major version), or a supported Vitest version of
+Node 22.12+ or 26+. Run `npm ci`, `npm test` and `npm run build`. Tests execute
+the actual invite SQL in an isolated PGlite database; they do not contact Neon.
+
+## Invite requests
 
 Create invite:
 
