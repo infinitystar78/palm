@@ -2,10 +2,9 @@ import type { Metadata } from "next";
 import LegalPage, { type LegalSection } from "@/components/legal/LegalPage";
 
 export const metadata: Metadata = {
-  title: "Privacy Policy — Draft",
-  description: "Draft privacy policy for Palm, operated by Avantra Services Ltd.",
-  alternates: { canonical: "/privacy" },
-  robots: { index: false, follow: false }
+  title: "Privacy Policy",
+  description: "Privacy Policy for Palm, operated by Avantra Services Ltd.",
+  alternates: { canonical: "/privacy" }
 };
 
 const sections: LegalSection[] = [
@@ -22,8 +21,6 @@ const sections: LegalSection[] = [
         Avantra Services Ltd is registered in England and Wales, company number <strong>14871429</strong>.
         Its registered office is Suite 1-2 Brookfield Court, Selby Road, Leeds, LS25 1NB, United Kingdom.
         For privacy questions, email <a href="mailto:hello@avantraservices.co.uk">hello@avantraservices.co.uk</a>.
-        This draft explains the current implementation; the review notes identify decisions
-        that must be resolved before it becomes an effective policy.
       </p>
     </>
   },
@@ -95,8 +92,8 @@ const sections: LegalSection[] = [
       <p>
         Recent storage is limited to 1,000 events. Summary counts and activity state can remain
         after older events are removed. No production analytics upload service is currently
-        configured. The launch analytics choice still needs confirmation; this section must
-        be updated before any analytics export is enabled.
+        configured. This policy describes that version of Palm. Analytics export would be
+        a change to these data practices and would need updated privacy information.
       </p>
     </>
   },
@@ -118,6 +115,29 @@ const sections: LegalSection[] = [
     </>
   },
   {
+    id: "purposes",
+    title: "Why we use information",
+    content: <>
+      <p>
+        For information processed through our service, we rely on the following legal
+        bases where UK or European data protection law applies:
+      </p>
+      <ul>
+        <li><strong>Providing the service you request:</strong> we use the information necessary to create and complete invites, return comparisons, recognise subscription access and resolve related support requests to perform our contract with you.</li>
+        <li><strong>Keeping the service working and secure:</strong> we use necessary technical request information to diagnose failures and prevent misuse. This serves our legitimate interests in operating and protecting Palm.</li>
+        <li><strong>Answering general enquiries:</strong> we use your contact details and message to respond and keep a proportionate record of the conversation, in our legitimate interests in supporting people who contact us.</li>
+        <li><strong>Meeting legal duties:</strong> we process information needed to handle applicable privacy-rights requests or comply with a specific legal requirement.</li>
+      </ul>
+      <p>
+        You do not have to create or complete an invite. If you choose not to send the
+        required derived profile, the online comparison feature cannot work. Camera and
+        notification permissions are device controls; they do not authorise unrelated uses
+        of information. Palm does not use readings to make decisions with legal or similarly
+        significant effects on you.
+      </p>
+    </>
+  },
+  {
     id: "providers",
     title: "Providers and technical information",
     content: <>
@@ -129,15 +149,47 @@ const sections: LegalSection[] = [
         Operational logs may contain request information and errors.
       </p>
       <p>
-        Pending rate-limit work uses a hashed network identifier, route, time window and
-        request count to limit abuse. Its production status has not been verified, and hashing
-        does not make that information guaranteed anonymous or prevent hosting logs from containing IP addresses.
+        The invite API processes requests in the United States, and the invite database
+        is in Frankfurt, Germany. These providers and their subprocessors may also process
+        information in other countries for service delivery, security and support.
       </p>
       <p>
-        The reviewed website does not include an advertising tracker or an analytics export
-        integration. The applicable provider contracts, processing locations, international
-        transfer safeguards, operational access and log and backup retention still need confirmation.
-        Provider information is available from <a href="https://vercel.com/legal/privacy-policy">Vercel</a> and <a href="https://neon.com/privacy-policy">Neon</a>.
+        For transfers that require contractual safeguards under UK or European law, the
+        providers’ data-processing terms include the European Commission’s Standard
+        Contractual Clauses and the applicable UK transfer addendum. You can read
+        {" "}<a href="https://vercel.com/legal/dpa">Vercel’s data-processing terms</a> and
+        {" "}<a href="https://neon.com/platform-terms">Neon’s terms and incorporated data-processing agreement</a>,
+        or contact us for information about the safeguards relevant to your data.
+      </p>
+      <p>
+        The website does not include an advertising tracker or an app-usage analytics export
+        integration. Providers also process some technical and account information for their
+        own service-security and business purposes, as explained in the privacy information
+        from <a href="https://vercel.com/legal/privacy-policy">Vercel</a> and
+        {" "}<a href="https://neon.com/privacy-policy">Neon</a>.
+      </p>
+    </>
+  },
+  {
+    id: "contact-data",
+    title: "Support and privacy correspondence",
+    content: <>
+      <p>
+        If you contact us, we receive your email address, the content of your message and
+        any details or attachments you choose to send. We use this information to respond,
+        investigate the issue and handle privacy requests. Our email provider processes
+        correspondence to deliver and store it for us.
+      </p>
+      <p>
+        Please send only what is needed to explain your request. Do not email payment card
+        details, raw palm images or creator access tokens. If more information is needed
+        to locate a record or verify your authority, we will explain what is needed and why.
+      </p>
+      <p>
+        We keep correspondence while resolving your enquiry or request, and afterwards only
+        where needed to document our response, deal with an active dispute or meet a specific
+        legal duty. We review retained correspondence and remove information that is no longer
+        needed, including unnecessary attachments and verification material.
       </p>
     </>
   },
@@ -152,16 +204,32 @@ const sections: LegalSection[] = [
         check-in history, preferences, usage summaries and saved invite sessions can remain.
       </p>
       <p>
-        New invites have a 14-day expiry time for completing a comparison.
-        <strong> This is not a guaranteed deletion date.</strong> In the current server code,
-        expired creator profiles and completed results can still be retrieved while their
-        records remain. A verified server deletion schedule has not been established.
+        <strong>Server invite access ends 14 days after the invite was created.</strong>
+        {" "}This applies to pending and completed invites; completing an invite does not
+        restart the period. The server then refuses access to the shared profiles and results.
+        An hourly cleanup task deletes expired invite records, including both participants’
+        shared profiles and any comparison result. Deletion normally happens on the next
+        hourly run, rather than at the exact expiry second. A failed or delayed run can
+        delay deletion; the access cutoff still applies while the record remains.
+      </p>
+      <p>
+        Deleted database records may remain recoverable within the database’s six-hour
+        recovery-history window. Recovery copies are not available through invite links.
+        If we restore data, expired invites remain blocked and applicable erasures must
+        be reapplied before restored data returns to service. No additional database
+        snapshots are configured for this service.
+      </p>
+      <p>
+        Hosting runtime logs used for troubleshooting are available to us within Vercel’s
+        current one-day standard retention window. We have no separate log-export destination
+        configured. This window does not describe every record the providers may keep for
+        their own security, billing or legal purposes; their privacy notices explain those uses.
+        Correspondence follows the retention criteria in the support section above.
       </p>
       <p>
         Deleting the app or starting a new scan does not delete server invite records,
         cancel an Apple subscription or remove copies shared with others. Offloading the
         app can retain local data, and device backups or previously exported files can retain copies.
-        Invite records, service logs and backups each need a confirmed retention period or deletion criterion.
       </p>
     </>
   },
@@ -183,12 +251,53 @@ const sections: LegalSection[] = [
       </p>
       <p>
         For privacy questions or requests, email <a href="mailto:hello@avantraservices.co.uk">hello@avantraservices.co.uk</a>.
-        A verified process for server-data requests still needs to be established.
-        There is currently no in-app control to delete server invites.
-        Any request process must verify authority over the relevant invite without exposing
-        another person’s data. Do not post creator tokens or private request details publicly.
+        Describe what you would like us to do and include the invite identifier if you know it.
+        There is currently no in-app control to delete server invites. We may need proportionate
+        information to locate your records and verify your authority before disclosing or
+        changing data. We cannot access records that remain only on your device, and possession
+        of a public invite link alone does not establish authority over another person’s information.
+        Do not post creator tokens or private request details publicly.
+      </p>
+      <p>
+        You can complain to the UK <a href="https://ico.org.uk/make-a-complaint/">Information
+        Commissioner’s Office (ICO)</a>, or to your local privacy regulator where applicable.
+        Contacting us first can help us resolve a concern, but does not limit your right to complain.
       </p>
     </>
+  },
+  {
+    id: "object",
+    title: "Your right to object",
+    content: <>
+      <p>
+        <strong>You can object to processing based on our legitimate interests</strong>
+        {" "}where that right applies, including by explaining circumstances particular to you.
+        Email <a href="mailto:hello@avantraservices.co.uk">hello@avantraservices.co.uk</a> to exercise it.
+        We will assess the objection and stop the relevant processing unless applicable law
+        permits us to continue, for example because of compelling grounds or a legal claim.
+      </p>
+    </>
+  },
+  {
+    id: "adults",
+    title: "Adults aged 18 and over",
+    content: <>
+      <p>
+        Palm is intended for adults aged 18 and over. If you believe someone under 18 has
+        sent personal data to Palm, contact <a href="mailto:hello@avantraservices.co.uk">hello@avantraservices.co.uk</a>
+        {" "}so we can assess the request and the steps needed. This age requirement does not
+        mean the app verifies each user’s age.
+      </p>
+    </>
+  },
+  {
+    id: "policy-changes",
+    title: "Changes to this policy",
+    content: <p>
+      We update this page when Palm’s data practices change and show the effective date
+      above. Where a change requires notice or a choice under applicable law, we will
+      provide it before applying that change to your information.
+    </p>
   }
 ];
 
@@ -198,13 +307,5 @@ export default function PrivacyPage() {
     title="Privacy Policy"
     introduction="What stays on your device, what an invite shares, and the choices you have."
     sections={sections}
-    reviewNotes={<ul>
-      <li>The company details and existing Avantra privacy contact have been checked against Companies House and Avantra’s published policy. A separate Palm mailbox has not been created. Finalise the request-handling procedure.</li>
-      <li>Choose and document lawful bases for invites, security and support; identify any legitimate interests and provide a clear, separate right-to-object notice where applicable. Camera permission and choosing to share are not a substitute for this assessment.</li>
-      <li>Set and test invite access expiry and deletion, including completed invites; define log, rate-limit, backup and support-request retention, deletion verification and restore handling.</li>
-      <li>Confirm Vercel and Neon processing regions, contracts, subprocessors, access controls and any international transfer safeguards. Do not infer deployed rate limiting or cleanup from local code.</li>
-      <li>Confirm launch countries, user age and children’s privacy requirements, applicable rights, complaint authority and whether representatives or a data protection officer are needed.</li>
-      <li>Confirm the launch analytics choice and reconcile this policy with both privacy manifests and App Store privacy answers. Add the actual request procedure and effective date after review; remove editorial notes and search-engine exclusions only for an authorised publication.</li>
-    </ul>}
   />;
 }

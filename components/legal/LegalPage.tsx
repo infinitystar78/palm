@@ -13,15 +13,13 @@ type LegalPageProps = {
   title: string;
   introduction: string;
   sections: LegalSection[];
-  reviewNotes: ReactNode;
 };
 
 export default function LegalPage({
   page,
   title,
   introduction,
-  sections,
-  reviewNotes
+  sections
 }: LegalPageProps) {
   return (
     <div className={`page-shell ${styles.shell}`} id="top">
@@ -49,16 +47,8 @@ export default function LegalPage({
           <p className="section-label">Palm · Avantra Services Ltd</p>
           <h1>{title}</h1>
           <p className={styles.lead}>{introduction}</p>
-          <p className={styles.date}>Updated 26 October 2026 · No effective date set</p>
+          <p className={styles.date}>Effective 26 October 2026</p>
         </div>
-
-        <aside className={styles.draftNotice} aria-label="Draft status">
-          <strong>Draft for review</strong>
-          <p>
-            This text is being prepared for Palm and is not yet in effect.
-            Unresolved details are listed in the <a href="#review-notes">review notes</a>.
-          </p>
-        </aside>
 
         <div className={styles.readingLayout}>
           <nav className={styles.contents} aria-label="On this page">
@@ -69,7 +59,6 @@ export default function LegalPage({
                   <a href={`#${section.id}`}>{section.title}</a>
                 </li>
               ))}
-              <li><a href="#review-notes">Review notes</a></li>
             </ol>
           </nav>
 
@@ -80,12 +69,6 @@ export default function LegalPage({
                 {section.content}
               </section>
             ))}
-
-            <section className={styles.reviewNotes} aria-labelledby="review-notes">
-              <p className={styles.reviewLabel}>Editorial notes · remove before publication</p>
-              <h2 id="review-notes" tabIndex={-1}>Review notes</h2>
-              {reviewNotes}
-            </section>
 
             <a className={styles.backToTop} href="#top">Back to top ↑</a>
           </article>
