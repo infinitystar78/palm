@@ -49,7 +49,7 @@ export default function LegalPage({
           <p className="section-label">Palm · Avantra Services Ltd</p>
           <h1>{title}</h1>
           <p className={styles.lead}>{introduction}</p>
-          <p className={styles.date}>Prepared 2 October 2026 · No effective date set</p>
+          <p className={styles.date}>Updated 26 October 2026 · No effective date set</p>
         </div>
 
         <aside className={styles.draftNotice} aria-label="Draft status">

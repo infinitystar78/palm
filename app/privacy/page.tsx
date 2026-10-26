@@ -19,7 +19,9 @@ const sections: LegalSection[] = [
         Palm App Clip, compatibility invite service and getpalm.app website.
       </p>
       <p>
-        The registered company details and a working privacy contact still need to be added.
+        Avantra Services Ltd is registered in England and Wales, company number <strong>14871429</strong>.
+        Its registered office is Suite 1-2 Brookfield Court, Selby Road, Leeds, LS25 1NB, United Kingdom.
+        For privacy questions, email <a href="mailto:hello@avantraservices.co.uk">hello@avantraservices.co.uk</a>.
         This draft explains the current implementation; the review notes identify decisions
         that must be resolved before it becomes an effective policy.
       </p>
@@ -180,8 +182,9 @@ const sections: LegalSection[] = [
         You may also have the right to complain to your data protection authority.
       </p>
       <p>
-        A working privacy contact and a verified process for server-data requests still need
-        to be established. There is currently no in-app control to delete server invites.
+        For privacy questions or requests, email <a href="mailto:hello@avantraservices.co.uk">hello@avantraservices.co.uk</a>.
+        A verified process for server-data requests still needs to be established.
+        There is currently no in-app control to delete server invites.
         Any request process must verify authority over the relevant invite without exposing
         another person’s data. Do not post creator tokens or private request details publicly.
       </p>
@@ -196,7 +199,7 @@ export default function PrivacyPage() {
     introduction="What stays on your device, what an invite shares, and the choices you have."
     sections={sections}
     reviewNotes={<ul>
-      <li>Confirm registered company details and a monitored privacy contact. support@getpalm.app is proposed, not a working request channel.</li>
+      <li>The company details and existing Avantra privacy contact have been checked against Companies House and Avantra’s published policy. A separate Palm mailbox has not been created. Finalise the request-handling procedure.</li>
       <li>Choose and document lawful bases for invites, security and support; identify any legitimate interests and provide a clear, separate right-to-object notice where applicable. Camera permission and choosing to share are not a substitute for this assessment.</li>
       <li>Set and test invite access expiry and deletion, including completed invites; define log, rate-limit, backup and support-request retention, deletion verification and restore handling.</li>
       <li>Confirm Vercel and Neon processing regions, contracts, subprocessors, access controls and any international transfer safeguards. Do not infer deployed rate limiting or cleanup from local code.</li>

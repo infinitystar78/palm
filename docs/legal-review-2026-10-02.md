@@ -1,5 +1,7 @@
 # Palm legal pages — review draft, 2 October 2026
 
+**Update, 26 October 2026:** The user has now requested that the pages go live. The release serves them as clearly labelled review drafts, with no effective date. Company details and the existing Avantra privacy contact have been verified and added. The original no-deploy instruction below records the 2 October scope; the new request authorises publication of the drafts. The remaining policy/operational decisions are still open. See `legal-release-2026-10-26.md` for the release boundary and evidence.
+
 These pages have no effective date and are not ready for publication or an App Store policy submission. Avantra Services Ltd is the confirmed operator. No deployment, production configuration change, email setup or purchase is authorised by this work.
 
 ## Scope and approach

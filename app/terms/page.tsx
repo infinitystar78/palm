@@ -111,8 +111,10 @@ const sections: LegalSection[] = [
         data sent for invites, service providers, retention and your choices.
       </p>
       <p>
-        The public support and privacy contact for Avantra Services Ltd is still being
-        confirmed. A working contact must be added before these terms take effect.
+        Contact Avantra Services Ltd at <a href="mailto:hello@avantraservices.co.uk">hello@avantraservices.co.uk</a> for
+        support or privacy questions. The company is registered in England and Wales,
+        company number <strong>14871429</strong>. Its registered office is Suite 1-2
+        Brookfield Court, Selby Road, Leeds, LS25 1NB, United Kingdom.
       </p>
     </>
   }
@@ -125,7 +127,7 @@ export default function TermsPage() {
     introduction="How Palm works, what a subscription means, and what to consider before sharing."
     sections={sections}
     reviewNotes={<ul>
-      <li>Add a working support contact, registered address, company number and country of registration. The proposed support@getpalm.app mailbox is not configured.</li>
+      <li>The company details and existing Avantra privacy contact have been checked against Companies House and Avantra’s published policy. A separate Palm mailbox has not been created.</li>
       <li>Apple’s standard EULA is the proposed app licence. Confirm the License Agreement setting in App Store Connect and whether a custom EULA applies in any launch territory.</li>
       <li>Confirm launch countries, minimum user age and any jurisdiction-specific consumer terms. No governing law, arbitration, liability cap or service-level commitment has been invented.</li>
       <li>Resolve the Privacy Policy’s retention and request-handling gaps, review both documents, then set an effective date and remove draft notes and search-engine exclusions before an authorised publication.</li>
